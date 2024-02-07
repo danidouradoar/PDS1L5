@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <string.h>
+
+struct Produtos{
+
+    char nome[50];
+    char marca[50];
+    float preco;
+
+};
+
+int main(){
+
+    struct Produtos p[8];
+    int i,j;
+    int prod_marca[8] = {0};
+    char marcas[8][50];
+    float preco_total = 0.0;
+    int marca_cont = 0;
+    float preco_med_mar;
+    int c =0;
+
+    for(i=0; i<8; i++){
+        scanf("%s %s %f", p[i].nome, p[i].marca, &p[i].preco);
+
+        preco_total += p[i].preco;
+
+        for(j=0; j<8; j++){
+            if(strcmp(marcas[j],p[i].marca) == 0){
+                prod_marca[j]++;
+                marca_cont = 1;
+                break;
+            }
+        }
+    
+        if(!marca_cont){
+            strcpy(marcas[i], p[i].marca);
+            prod_marca[i]++;
+        }
+    }
+
+    for (int i = 0; i<8; i++){
+        if(prod_marca>0)
+            printf("%s %d\n", marcas[i], prod_marca[i]);
+    }
+
+    printf("media total %.2f\n", preco_total/8);
+
+    for(int i=0; i<8; i++){
+        if(prod_marca[i]>0){
+            preco_med_mar = 0;
+            for(int j=0; j<8; j++){
+                if(strcmp(marcas[i],p[j].marca) == 0){
+                    preco_med_mar += p[j].preco;
+                    c++;
+                }
+            }
+            printf("media %s %.2f\n", marcas[i], preco_med_mar/c);
+        }
+    }
+
+    return 0;
+}
