@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <string.h>
+
+struct Cadastro {
+
+    char nome[20];
+    int idade;
+    float salario;
+
+};
+
+int main() {
+
+    struct Cadastro cad[4];
+    int i;
+    int j;
+    char op[10];
+    char in[] = "inserir";
+    char out[] = "mostrar";
+    char nome[15];
+    int q=0;
+
+    while(1){
+
+        if(scanf("%s", op) != 1)
+            break;
+        if (strcmp(op, in) == 0) {
+            scanf("%s %d %f", cad[i].nome, &cad[i].idade, &cad[i].salario);
+            if(i>3)
+                printf("Espaco insuficiente");
+            else{
+                printf("Registro %s %d %f inserido \n", cad[i].nome, cad[i].idade, cad[i].salario);
+            }
+            i++;
+        }
+
+        else if (strcmp(op, out) == 0) {
+            scanf("%s", nome);
+            for(j=0;j<4;j++){
+                if(strcmp(nome, cad[i].nome) == 0);
+                    printf("Registro %s %d %f\n", cad[i].nome, cad[i].idade, cad[i].salario);
+                    q = 1;        
+            }
+            if(q == 0)
+                printf("Registro ausente\n");
+        }
+        
+    }
+        
+    return 0;
+}
